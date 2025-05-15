@@ -1,6 +1,6 @@
 .booking-modal {
 	position: absolute;
-	bottom: -1rem;
+	top: 80%;
 	margin: 0 auto;
 	/* background-color: aqua; */
 	width: 100%;

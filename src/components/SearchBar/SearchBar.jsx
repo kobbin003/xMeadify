@@ -8,12 +8,13 @@ const SearchBar = () => {
 
 	//* unlike the regular change handler we are taking in the value instead of event as the argument
 	// it is because of the nature of the AutoComplete component.
-	const handleOnStateChange = (val) => {
-		setState(val);
+	const handleOnStateChange = (e) => {
+		// console.log("eeeeeeee......", val);
+		setState(e.target.value);
 	};
 
-	const handleOnCityChange = (val) => {
-		setCity(val);
+	const handleOnCityChange = (e) => {
+		setCity(e.target.value);
 	};
 
 	return (
