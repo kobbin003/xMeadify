@@ -18,7 +18,7 @@ import { LuSearch } from "react-icons/lu";
 
 const SearchInput = ({ label, handleOnChange, value, data }) => {
 	return (
-		<FormControl sx={{ width: "30%" }}>
+		<FormControl sx={{ width: "30%" }} id={label}>
 			{/* <InputLabel id={label}>{label}</InputLabel> */}
 			<LuSearch
 				style={{
