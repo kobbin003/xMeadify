@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: var(--nav-black);
+}
+
+:root {
+	--primary: #2aa8ff;
+	--primary-light: #2aa8ff45;
+	--marine: #e7f0ff;
+	--white: #ffffff;
+	--nav-black: #102851;
+	--light-grey: #fafbfe;
+}
+
+.primary-text {
+	color: var(--primary);
+}
+
+.primary-button {
+	border: none;
+	background-color: var(--primary);
+	color: var(--white);
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	width: fit-content;
+}

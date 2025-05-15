@@ -1,0 +1,31 @@
+.message-bar {
+	background-color: var(--primary);
+	color: var(--white);
+	text-align: center;
+	padding: 0.6em 0;
+}
+.icon {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+}
+.icon-text {
+	font-weight: 600;
+}
+nav {
+	display: flex;
+	justify-content: space-between;
+	/* padding right and left are set at app.css */
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+}
+.nav-right {
+	display: flex;
+	gap: 1em;
+	align-items: center;
+}
+
+.my-booking {
+	background-color: var(--primary);
+	color: var(--white);
+}
