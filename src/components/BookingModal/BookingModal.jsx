@@ -16,7 +16,6 @@ const BookingModal = () => {
 	const handleRadioChange = (e) => {
 		setSelectedCategory(e.target.value);
 	};
-	console.log("selectedCategory: ", selectedCategory);
 	return (
 		<div className={styles["booking-modal"]}>
 			<div className={styles["center-booking-modal"]}>

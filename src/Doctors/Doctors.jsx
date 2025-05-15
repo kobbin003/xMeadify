@@ -1,7 +1,14 @@
 import React from "react";
+import SearchBar from "../components/SearchBar/SearchBar";
+import MedicalCenters from "../components/SearchHospital/MedicalCenters";
 
 const Doctors = () => {
-	return <div>Doctors</div>;
+	return (
+		<div>
+			<SearchBar />
+			<MedicalCenters />
+		</div>
+	);
 };
 
 export default Doctors;

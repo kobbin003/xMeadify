@@ -7,11 +7,23 @@ export const useSearchContext = () => useContext(searchContext);
 
 const SearchProvider = ({ children }) => {
 	const [state, setState] = useState("");
+	const [states, setStates] = useState([]);
 	const [city, setCity] = useState("");
+
+	//* do not need to implement the selectedCategory since we are hardcoding the value to be doctors.
 	// const [selectedCategory, setSelectedCategory] = useState("");
 
 	return (
-		<searchContext.Provider value={{ state, city, setState, setCity }}>
+		<searchContext.Provider
+			value={{
+				state,
+				city,
+				setState,
+				setCity,
+				states,
+				setStates,
+			}}
+		>
 			{children}
 		</searchContext.Provider>
 	);

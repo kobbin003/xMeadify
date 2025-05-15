@@ -1,25 +1,26 @@
-import React from "react";
-import {
-	Autocomplete,
-	Box,
-	FormControl,
-	IconButton,
-	Input,
-	InputAdornment,
-	InputBase,
-	InputLabel,
-	MenuItem,
-	Paper,
-	Select,
-	Stack,
-	TextField,
-} from "@mui/material";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { useEffect } from "react";
 import { LuSearch } from "react-icons/lu";
+import { useLocation, useNavigate } from "react-router";
+import { useSearchContext } from "../../providers/SearchProvider";
 
 const SearchInput = ({ label, handleOnChange, value, data }) => {
+	const location = useLocation();
+	let navigate = useNavigate();
+	const { state } = useSearchContext();
+	console.log("location: ", location);
+
+	// const shouldOpenDropDown =
+	// 	homeSelectClickRef.current && location.pathname != "/" && label == "state";
+	useEffect(() => {
+		// navigate to docotrs after the state has been selected
+		if (location.pathname == "/" && state) {
+			navigate("/doctors");
+		}
+	}, [state]);
+
 	return (
 		<FormControl sx={{ width: "30%" }} id={label}>
-			{/* <InputLabel id={label}>{label}</InputLabel> */}
 			<LuSearch
 				style={{
 					position: "absolute",
@@ -30,15 +31,14 @@ const SearchInput = ({ label, handleOnChange, value, data }) => {
 				}}
 			/>
 			<Select
-				// labelId={label}
-				// id={label}
 				value={value}
-				// label={label}
-				// aria-placeholder={label}
 				displayEmpty
 				onChange={handleOnChange}
 				sx={{ paddingLeft: "1.2em" }}
 				inputProps={{ "aria-label": "Without label" }}
+				MenuProps={{
+					slotProps: { paper: { sx: { maxHeight: 400 } } },
+				}}
 			>
 				<MenuItem value="" disabled>
 					<span style={{ color: "grey" }}>{label}</span>

@@ -1,0 +1,27 @@
+.bookings {
+}
+
+.tab {
+}
+ul {
+	list-style: none;
+}
+.day-list {
+	& > li {
+		display: flex;
+		& > span {
+			background-color: blanchedalmond;
+			width: fit-content;
+			min-width: 5em;
+		}
+	}
+}
+.time-list {
+	display: flex;
+	gap: 1em;
+}
+.time-capsule {
+}
+.selected-btn {
+	background-color: cornflowerblue;
+}
