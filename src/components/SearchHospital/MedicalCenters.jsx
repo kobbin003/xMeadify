@@ -12,7 +12,8 @@ const MedicalCenters = () => {
 				<>
 					<div>
 						<h1>
-							{medicalCenters.length} medical centers available in {city}
+							{medicalCenters.length} medical centers available in{" "}
+							{city.toLowerCase()}
 						</h1>
 						<p>
 							<img src="/tick.svg" alt="" height={"20"} width={"20"} />
