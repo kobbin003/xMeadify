@@ -1,5 +1,5 @@
 import { useSearchContext } from "../../providers/SearchProvider";
-import MedicalResultCard from "./MedicalResultCard";
+import MedicalInfoCard from "./MedicalInfoCard";
 
 const MedicalCenters = () => {
 	const { city, medicalCenters, medicalCentersIsLoading } = useSearchContext();
@@ -25,7 +25,7 @@ const MedicalCenters = () => {
 					</div>
 					<div>
 						{medicalCenters.map((medicalInfo) => (
-							<MedicalResultCard medicalInfo={medicalInfo} />
+							<MedicalInfoCard medicalInfo={medicalInfo} />
 						))}
 					</div>
 				</>
