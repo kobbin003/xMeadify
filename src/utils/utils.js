@@ -24,7 +24,7 @@ export function getDayMap() {
 }
 
 // save the appointment timing on time-capsule click
-export function saveAppointmentTiming(medicalInfo, day, time) {
+export function saveAppointmentTiming(bookingInfo) {
 	const storedAppointments = localStorage.getItem("bookings");
 	let parsedValue = JSON.parse(storedAppointments);
 	if (!storedAppointments) {
@@ -34,24 +34,52 @@ export function saveAppointmentTiming(medicalInfo, day, time) {
 	// if the appointment is found for a particular medicalId
 	// we will just update the day and time
 	const isMedicalFound = parsedValue.some(
-		({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
+		(medical) => medical["Provider ID"] == bookingInfo["Provider ID"]
 	);
 	if (isMedicalFound) {
 		parsedValue = parsedValue.map((item) => {
-			if (item.medical["Provider ID"] == medicalInfo["Provider ID"]) {
-				return { ...item, day, time };
+			if (item["Provider ID"] == bookingInfo["Provider ID"]) {
+				return { ...bookingInfo };
 			} else {
 				return item;
 			}
 		});
 	} else {
 		// else we will just create a new one.
-		parsedValue.push({ medical: medicalInfo, day, time });
+		parsedValue.push({ ...bookingInfo });
 	}
 
 	// store back the value:
 	localStorage.setItem("bookings", JSON.stringify(parsedValue));
 }
+// export function saveAppointmentTiming(medicalInfo, day, time) {
+// 	const storedAppointments = localStorage.getItem("bookings");
+// 	let parsedValue = JSON.parse(storedAppointments);
+// 	if (!storedAppointments) {
+// 		parsedValue = [];
+// 	}
+
+// 	// if the appointment is found for a particular medicalId
+// 	// we will just update the day and time
+// 	const isMedicalFound = parsedValue.some(
+// 		({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
+// 	);
+// 	if (isMedicalFound) {
+// 		parsedValue = parsedValue.map((item) => {
+// 			if (item.medical["Provider ID"] == medicalInfo["Provider ID"]) {
+// 				return { ...item, day, time };
+// 			} else {
+// 				return item;
+// 			}
+// 		});
+// 	} else {
+// 		// else we will just create a new one.
+// 		parsedValue.push({ medical: medicalInfo, day, time });
+// 	}
+
+// 	// store back the value:
+// 	localStorage.setItem("bookings", JSON.stringify(parsedValue));
+// }
 
 // check if a particular slot(time-capsule) is saved.
 export function slotIsSaved(medicalId, day, time) {
@@ -64,12 +92,12 @@ export function slotIsSaved(medicalId, day, time) {
 		return false;
 	}
 
-	const find = parsedValue.find(
-		({ medical }) => medical["Provider ID"] == medicalId
+	const medicalFound = parsedValue.find(
+		(medical) => medical["Provider ID"] == medicalId
 	);
 
-	if (!find) return false;
-	return find.day == day && find.time == time;
+	if (!medicalFound) return false;
+	return medicalFound.bookingDate == day && medicalFound.bookingTime == time;
 }
 
 // to get the users saved bookings

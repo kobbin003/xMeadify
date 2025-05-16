@@ -41,7 +41,18 @@ const BookingSection = ({ medicalInfo }) => {
 
 	useEffect(() => {
 		if (selectedTime) {
-			saveAppointmentTiming(medicalInfo, dayMap[day], selectedTime);
+			let bookingInfo = {};
+			bookingInfo["Provider ID"] = medicalInfo["Provider ID"];
+			bookingInfo["Hospital Name"] = medicalInfo["Hospital Name"];
+			bookingInfo["City"] = medicalInfo["City"];
+			bookingInfo["State"] = medicalInfo["State"];
+			bookingInfo["Hospital Type"] = medicalInfo["Hospital Type"];
+			bookingInfo["Hospital overall rating"] =
+				medicalInfo["Hospital overall rating"];
+			bookingInfo.bookingDate = dayMap[day];
+			bookingInfo.bookingTime = selectedTime;
+
+			saveAppointmentTiming(bookingInfo);
 			setSavingDone(true);
 		}
 	}, [selectedTime]);
