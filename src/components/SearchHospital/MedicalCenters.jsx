@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from "react";
 import { useSearchContext } from "../../providers/SearchProvider";
-import axios from "axios";
 import MedicalResultCard from "./MedicalResultCard";
 
 const MedicalCenters = () => {
-	const { state, city } = useSearchContext();
-	const [medicalCenters, setMedicalCenters] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const { city, medicalCenters, medicalCentersIsLoading } = useSearchContext();
 
-	// console.log("medicalCenters: ", medicalCenters);
-	useEffect(() => {
-		if (state && city) {
-			setIsLoading(true);
-			(async function () {
-				const medicalCentersUrl = `https://meddata-backend.onrender.com/data?state=${state}&city=${city}`;
-				const { data, status } = await axios.get(medicalCentersUrl);
-				if (status == 200) {
-					setMedicalCenters(data);
-					setIsLoading(false);
-				}
-			})();
-		}
-	}, [state, city]);
 	return (
 		<div>
-			{isLoading ? (
+			{medicalCentersIsLoading ? (
 				<p>Loading...</p>
-			) : (
+			) : medicalCenters.length ? (
 				<>
 					<div>
 						<h1>
@@ -46,6 +28,8 @@ const MedicalCenters = () => {
 						))}
 					</div>
 				</>
+			) : (
+				<></>
 			)}
 		</div>
 	);

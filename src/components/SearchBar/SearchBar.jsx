@@ -1,13 +1,21 @@
 import { Button } from "@mui/material";
 import SearchInput from "./SearchInput";
 import { LuSearch } from "react-icons/lu";
-import styles from "./searchbar.module.css";
+import "./searchbar.module.css";
 import { useSearchContext } from "../../providers/SearchProvider";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const SearchBar = () => {
-	const { state, city, setState, setCity, states, setStates } =
-		useSearchContext();
+	const {
+		state,
+		city,
+		setState,
+		setCity,
+		states,
+		setStates,
+		setMedicalCenters,
+		setMedicalCentersIsLoading,
+	} = useSearchContext();
 	const [statesIsLoading, setStatesIsLoading] = useState(false);
 	const [citiesIsLoading, setCitiesIsLoading] = useState(false);
 	const [cities, setCities] = useState([]);
@@ -19,6 +27,21 @@ const SearchBar = () => {
 
 	const handleOnCityChange = (e) => {
 		setCity(e.target.value);
+	};
+
+	const handleSearch = (e) => {
+		e.preventDefault();
+		if (state && city) {
+			setMedicalCentersIsLoading(true);
+			(async function () {
+				const medicalCentersUrl = `https://meddata-backend.onrender.com/data?state=${state}&city=${city}`;
+				const { data, status } = await axios.get(medicalCentersUrl);
+				if (status == 200) {
+					setMedicalCenters(data);
+					setMedicalCentersIsLoading(false);
+				}
+			})();
+		}
 	};
 
 	useEffect(() => {
@@ -49,7 +72,7 @@ const SearchBar = () => {
 	}, [state]);
 
 	return (
-		<form>
+		<>
 			<SearchInput
 				label="state"
 				handleOnChange={handleOnStateChange}
@@ -63,14 +86,16 @@ const SearchBar = () => {
 				data={citiesIsLoading ? ["Loading..."] : cities}
 			/>
 			<Button
+				id="searchBtn"
 				type="submit"
 				variant="contained"
 				startIcon={<LuSearch />}
+				onClick={handleSearch}
 				sx={{ backgroundColor: "var(--primary)", textTransform: "none" }}
 			>
 				Search
 			</Button>
-		</form>
+		</>
 	);
 };
 
