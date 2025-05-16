@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./bookings.module.css";
 import { Button, Tab, Tabs } from "@mui/material";
 import TimeCapsule from "./TimeCapsule";
-/**
- * index 0 -> today
- * index 1 -> tommorrow
- * index 2 -> day after tommorrow
- */
+import { getDayMap, saveAppointmentTiming } from "../../utils/utils";
+
 const bookingTimeSlots = {
 	morning: [{ time: "11:30 AM", available: true }],
 	afternoon: [
@@ -25,6 +22,7 @@ const bookingTimeSlots = {
 };
 
 export const dayMap = getDayMap();
+
 const Bookings = ({ medicalInfo }) => {
 	const [day, setDay] = useState("today");
 	const [selectedTime, setSelectedTime] = useState("");
@@ -33,14 +31,11 @@ const Bookings = ({ medicalInfo }) => {
 		return acc + bookingTimeSlots[key].length;
 	}, 0);
 
-	console.log("slotsAvailable: ", slotsAvailable);
 	const handleTabChange = (e, newValue) => {
-		console.log("newValue: ", newValue);
 		setDay(newValue);
 	};
 
 	const handleTimeSelect = (val) => {
-		console.log("selected-time: ", val);
 		setSelectedTime(val);
 	};
 
@@ -103,56 +98,5 @@ const Bookings = ({ medicalInfo }) => {
 		</div>
 	);
 };
-function getDayMap() {
-	const today = new Date();
 
-	const tomorrow = new Date();
-	tomorrow.setDate(today.getDate() + 1);
-
-	const dayAfterTomorrow = new Date();
-	dayAfterTomorrow.setDate(today.getDate() + 2);
-
-	function getDateFormatted(date) {
-		return date.toLocaleString("en-GB", {
-			month: "short",
-			day: "2-digit",
-			weekday: "short",
-		});
-	}
-
-	return {
-		today: getDateFormatted(today),
-		tomorrow: getDateFormatted(tomorrow),
-		afterTommorrow: getDateFormatted(dayAfterTomorrow),
-	};
-}
-
-function saveAppointmentTiming(medicalInfo, day, time) {
-	const storedAppointments = localStorage.getItem("appointments");
-	let parsedValue = JSON.parse(storedAppointments);
-	if (!storedAppointments) {
-		parsedValue = [];
-	}
-
-	// if the appointment is found for a particular medicalId
-	// we will just update the day and time
-	const isMedicalFound = parsedValue.some(
-		({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
-	);
-	if (isMedicalFound) {
-		parsedValue = parsedValue.map((item) => {
-			if (item.medical["Provider ID"] == medicalInfo["Provider ID"]) {
-				return { ...item, day, time };
-			} else {
-				return item;
-			}
-		});
-	} else {
-		// else we will just create a new one.
-		parsedValue.push({ medical: medicalInfo, day, time });
-	}
-
-	// store back the value:
-	localStorage.setItem("appointments", JSON.stringify(parsedValue));
-}
 export default Bookings;

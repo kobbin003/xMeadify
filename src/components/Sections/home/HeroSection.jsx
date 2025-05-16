@@ -1,6 +1,5 @@
-import React from "react";
-import styles from "./herosection.module.css";
 import BookingModal from "../../BookingModal/BookingModal";
+import styles from "./herosection.module.css";
 
 const HeroSection = () => {
 	return (

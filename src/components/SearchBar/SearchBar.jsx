@@ -5,6 +5,7 @@ import "./searchbar.module.css";
 import { useSearchContext } from "../../providers/SearchProvider";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 const SearchBar = () => {
 	const {
 		state,

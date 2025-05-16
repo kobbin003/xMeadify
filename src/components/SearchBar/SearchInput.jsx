@@ -8,12 +8,9 @@ const SearchInput = ({ label, handleOnChange, value, data }) => {
 	const location = useLocation();
 	let navigate = useNavigate();
 	const { state } = useSearchContext();
-	console.log("location: ", location);
 
-	// const shouldOpenDropDown =
-	// 	homeSelectClickRef.current && location.pathname != "/" && label == "state";
 	useEffect(() => {
-		// navigate to docotrs after the state has been selected
+		// navigate to doctors after the state has been selected
 		if (location.pathname == "/" && state) {
 			navigate("/doctors");
 		}

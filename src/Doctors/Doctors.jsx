@@ -1,4 +1,3 @@
-import React from "react";
 import SearchBar from "../components/SearchBar/SearchBar";
 import MedicalCenters from "../components/SearchHospital/MedicalCenters";
 

@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import styles from "./medicalInfoCard.module.css";
-import Bookings from "./Bookings";
+import { useState } from "react";
 import { useLocation } from "react-router";
-import { getMyBookings } from "../../MyBookings/MyBookings";
-import TimeCapsule from "./TimeCapsule";
+import Bookings from "./Bookings";
+import styles from "./medicalInfoCard.module.css";
+import { getMyBookings } from "../../utils/utils";
 
 const MedicalInfoCard = ({ medicalInfo }) => {
-	console.log("medicalInfo:...", medicalInfo);
 	const [isBookingsVisible, setIsBookingsVisible] = useState(false);
 	const handleToogleBookingSection = () => {
 		setIsBookingsVisible((prev) => !prev);
 	};
 	const location = useLocation();
-	console.log("medical-result-card", location);
 	const isMybookingRoute = location.pathname.includes("/my-bookings");
 
 	const myBookings = getMyBookings();

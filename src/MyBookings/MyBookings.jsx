@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MedicalInfoCard from "../components/SearchHospital/MedicalInfoCard";
+import { getMyBookings } from "../utils/utils";
 
 const MyBookings = () => {
 	const [myBookings, setMyBookings] = useState([]);
-	console.log("myBookings: ", myBookings);
+
 	useEffect(() => {
 		setMyBookings(getMyBookings());
 	}, []);
+
 	return (
 		<div>
 			<h1>My Bookings</h1>
@@ -17,15 +19,5 @@ const MyBookings = () => {
 		</div>
 	);
 };
-
-export function getMyBookings() {
-	const storedAppointments = localStorage.getItem("appointments");
-	if (storedAppointments) {
-		const parsed = JSON.parse(storedAppointments);
-		return parsed;
-	} else {
-		return [];
-	}
-}
 
 export default MyBookings;
