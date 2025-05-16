@@ -21,7 +21,7 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 	);
 	return (
 		<div>
-			<div onClick={handleToogleBookingSection}>
+			<div>
 				<div className={styles["hospital-icon"]}>
 					<img
 						src="/hospitalicon.jpg"
@@ -59,7 +59,9 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 				) : (
 					<div className={styles["booking"]}>
 						<p>Available Today</p>
-						<button>book FREE Center Visit</button>
+						<button onClick={handleToogleBookingSection}>
+							Book FREE Center Visit
+						</button>
 					</div>
 				)}
 			</div>

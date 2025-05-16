@@ -77,29 +77,29 @@ const Bookings = ({ medicalInfo }) => {
 					aria-label="basic tabs example"
 				>
 					<Tab
-						label="Today"
+						label={`${slotsAvailable} Slots Available`}
 						value={"today"}
-						icon={<p>{slotsAvailable} Slots Available</p>}
-						iconPosition="bottom"
+						icon={<p>Today</p>}
+						iconPosition="top"
 					/>
 					<Tab
-						label="Tommorow"
+						label={`${slotsAvailable} Slots Available`}
 						value={"tomorrow"}
-						icon={<p>{slotsAvailable} Slots Available</p>}
-						iconPosition="bottom"
+						icon={<p>Tommorow</p>}
+						iconPosition="top"
 					/>
 					<Tab
-						label={dayMap["afterTommorrow"]}
+						label={`${slotsAvailable} Slots Available`}
 						value={"afterTommorrow"}
-						icon={<p>{slotsAvailable} Slots Available</p>}
-						iconPosition="bottom"
+						icon={<p>{dayMap["afterTommorrow"]}</p>}
+						iconPosition="top"
 					/>
 				</Tabs>
 			</div>
 			<ul className={styles["day-list"]}>
 				{["morning", "afternoon", "evening"].map((timings) => (
 					<li key={timings}>
-						<span>{timings}</span>
+						<p>{timings}</p>
 						<ul className={styles["time-list"]}>
 							{bookingTimeSlots[timings].map(({ time }) => (
 								<li key={timings + time} className={styles["time-capsule"]}>

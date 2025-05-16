@@ -9,7 +9,7 @@ ul {
 .day-list {
 	& > li {
 		display: flex;
-		& > span {
+		& > p {
 			background-color: blanchedalmond;
 			width: fit-content;
 			min-width: 5em;
