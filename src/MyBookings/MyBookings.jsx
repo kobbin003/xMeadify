@@ -14,7 +14,12 @@ const MyBookings = () => {
 			<h1>My Bookings</h1>
 			{myBookings.length > 0 &&
 				myBookings.map(({ medical, day, time }) => (
-					<MedicalInfoCard medicalInfo={medical} day={day} time={time} />
+					<MedicalInfoCard
+						key={medical?.["Provider ID"]}
+						medicalInfo={medical}
+						day={day}
+						time={time}
+					/>
 				))}
 		</div>
 	);

@@ -14,7 +14,7 @@ const MedicalInfoCard = ({ medicalInfo, day, time }) => {
 	const isMybookingRoute = location.pathname.includes("/my-bookings");
 
 	return (
-		<div key={medicalInfo}>
+		<div>
 			<div>
 				<div className={styles["hospital-icon"]}>
 					<img
@@ -25,12 +25,12 @@ const MedicalInfoCard = ({ medicalInfo, day, time }) => {
 					/>
 				</div>
 				<div className={styles["gospital-detail"]}>
-					<h3>{medicalInfo["Hospital Name"]}</h3>
+					<h3>{medicalInfo?.["Hospital Name"]}</h3>
 					<div>
 						<p>
-							{medicalInfo["City"]}, {medicalInfo["State"]}
+							{medicalInfo?.["City"]}, {medicalInfo?.["State"]}
 						</p>
-						<p>{medicalInfo["Hospital Type"]}</p>
+						<p>{medicalInfo?.["Hospital Type"]}</p>
 						<p>more</p>
 						{!isMybookingRoute && (
 							<p>
@@ -42,7 +42,7 @@ const MedicalInfoCard = ({ medicalInfo, day, time }) => {
 					</div>
 					<div className={styles["rating"]}>
 						<img src="/thumbsup.svg" alt="like" />
-						{medicalInfo["Hospital overall rating"]}
+						{medicalInfo?.["Hospital overall rating"]}
 					</div>
 				</div>
 				{isMybookingRoute ? (

@@ -25,7 +25,10 @@ const MedicalCenters = () => {
 					</div>
 					<div>
 						{medicalCenters.map((medicalInfo) => (
-							<MedicalInfoCard medicalInfo={medicalInfo} />
+							<MedicalInfoCard
+								key={medicalInfo?.["Provider ID"]}
+								medicalInfo={medicalInfo}
+							/>
 						))}
 					</div>
 				</>
