@@ -23,7 +23,7 @@ const bookingTimeSlots = {
 
 export const dayMap = getDayMap();
 
-const Bookings = ({ medicalInfo }) => {
+const BookingSection = ({ medicalInfo }) => {
 	const [day, setDay] = useState("today");
 	const [selectedTime, setSelectedTime] = useState("");
 	const [savingDone, setSavingDone] = useState(false);
@@ -99,4 +99,4 @@ const Bookings = ({ medicalInfo }) => {
 	);
 };
 
-export default Bookings;
+export default BookingSection;

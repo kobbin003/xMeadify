@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router";
-import Bookings from "./Bookings";
+import BookingSection from "./BookingSection";
 import styles from "./medicalInfoCard.module.css";
 import { getMyBookings } from "../../utils/utils";
 
@@ -13,9 +13,14 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 	const isMybookingRoute = location.pathname.includes("/my-bookings");
 
 	const myBookings = getMyBookings();
-	const appointmentFixed = myBookings.find(
-		({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
-	);
+
+	const appointmentFixed =
+		!isMybookingRoute && myBookings.length == 0
+			? false
+			: myBookings.find(
+					({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
+			  );
+
 	return (
 		<div>
 			<div>
@@ -50,8 +55,12 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 				</div>
 				{isMybookingRoute ? (
 					<div className={styles["appointment-time"]}>
-						<div>{appointmentFixed.day}</div>
-						<div>{appointmentFixed.time}</div>
+						{appointmentFixed && (
+							<>
+								<div>{appointmentFixed.day}</div>
+								<div>{appointmentFixed.time}</div>
+							</>
+						)}
 					</div>
 				) : (
 					<div className={styles["booking"]}>
@@ -62,7 +71,7 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 					</div>
 				)}
 			</div>
-			{isBookingsVisible ? <Bookings medicalInfo={medicalInfo} /> : <></>}
+			{isBookingsVisible ? <BookingSection medicalInfo={medicalInfo} /> : <></>}
 		</div>
 	);
 };

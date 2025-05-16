@@ -60,6 +60,10 @@ export function slotIsSaved(medicalId, day, time) {
 		return false;
 	}
 	let parsedValue = JSON.parse(storedAppointments);
+	if (parsedValue.length == 0) {
+		return false;
+	}
+
 	const find = parsedValue.find(
 		({ medical }) => medical["Provider ID"] == medicalId
 	);
