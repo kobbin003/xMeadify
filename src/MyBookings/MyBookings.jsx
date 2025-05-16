@@ -9,7 +9,7 @@ const MyBookings = () => {
 	}, []);
 	return (
 		<div>
-			<h1>my bookings</h1>
+			<h1>My Bookings</h1>
 			{myBookings.length > 0 &&
 				myBookings.map(({ medical }) => (
 					<MedicalInfoCard medicalInfo={medical} />

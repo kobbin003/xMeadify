@@ -97,11 +97,11 @@ const Bookings = ({ medicalInfo }) => {
 				</Tabs>
 			</div>
 			<ul className={styles["day-list"]}>
-				{["morning", "afternoon", "evening"].map((timings) => (
+				{["Morning", "Afternoon", "Evening"].map((timings) => (
 					<li key={timings}>
 						<p>{timings}</p>
 						<ul className={styles["time-list"]}>
-							{bookingTimeSlots[timings].map(({ time }) => (
+							{bookingTimeSlots[timings.toLowerCase()].map(({ time }) => (
 								<li key={timings + time} className={styles["time-capsule"]}>
 									<TimeCapsule
 										handleTimeSelect={handleTimeSelect}
