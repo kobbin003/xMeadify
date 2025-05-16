@@ -13,8 +13,8 @@ const MyBookings = () => {
 		<div>
 			<h1>My Bookings</h1>
 			{myBookings.length > 0 &&
-				myBookings.map(({ medical }) => (
-					<MedicalInfoCard medicalInfo={medical} />
+				myBookings.map(({ medical, day, time }) => (
+					<MedicalInfoCard medicalInfo={medical} day={day} time={time} />
 				))}
 		</div>
 	);

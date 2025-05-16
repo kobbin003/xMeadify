@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useLocation } from "react-router";
 import BookingSection from "./BookingSection";
 import styles from "./medicalInfoCard.module.css";
-import { getMyBookings } from "../../utils/utils";
 
-const MedicalInfoCard = ({ medicalInfo }) => {
+// *day and time will only be provded from the my-booking section
+
+const MedicalInfoCard = ({ medicalInfo, day, time }) => {
 	const [isBookingsVisible, setIsBookingsVisible] = useState(false);
 	const handleToogleBookingSection = () => {
 		setIsBookingsVisible((prev) => !prev);
@@ -12,18 +13,8 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 	const location = useLocation();
 	const isMybookingRoute = location.pathname.includes("/my-bookings");
 
-	const myBookings = getMyBookings();
-
-	const appointmentFixed =
-		!isMybookingRoute || myBookings.length == 0
-			? false
-			: myBookings.find(
-					({ medical }) =>
-						medical["Provider ID"] == medicalInfo?.["Provider ID"]
-			  );
-
 	return (
-		<div>
+		<div key={medicalInfo}>
 			<div>
 				<div className={styles["hospital-icon"]}>
 					<img
@@ -56,12 +47,8 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 				</div>
 				{isMybookingRoute ? (
 					<div className={styles["appointment-time"]}>
-						{appointmentFixed && (
-							<>
-								<div>{appointmentFixed.day}</div>
-								<div>{appointmentFixed.time}</div>
-							</>
-						)}
+						<div>{day}</div>
+						<div>{time}</div>
 					</div>
 				) : (
 					<div className={styles["booking"]}>
