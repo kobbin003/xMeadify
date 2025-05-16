@@ -77,6 +77,7 @@ export function getMyBookings() {
 	const storedAppointments = localStorage.getItem("bookings");
 	if (storedAppointments) {
 		const parsed = JSON.parse(storedAppointments);
+		if (!Array.isArray(parsed)) return [];
 		return parsed;
 	} else {
 		return [];

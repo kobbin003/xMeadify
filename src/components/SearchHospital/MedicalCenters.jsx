@@ -3,12 +3,12 @@ import MedicalInfoCard from "./MedicalInfoCard";
 
 const MedicalCenters = () => {
 	const { city, medicalCenters, medicalCentersIsLoading } = useSearchContext();
-
+	console.log("medicalCenters: ", medicalCenters);
 	return (
 		<div>
 			{medicalCentersIsLoading ? (
 				<p>Loading...</p>
-			) : medicalCenters.length ? (
+			) : medicalCenters.length > 0 ? (
 				<>
 					<div>
 						<h1>

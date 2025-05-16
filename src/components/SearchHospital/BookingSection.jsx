@@ -83,7 +83,7 @@ const BookingSection = ({ medicalInfo }) => {
 								<li key={timings + time} className={styles["time-capsule"]}>
 									<TimeCapsule
 										handleTimeSelect={handleTimeSelect}
-										medicalId={medicalInfo["Provider ID"]}
+										medicalId={medicalInfo?.["Provider ID"]}
 										time={time}
 										day={dayMap[day]}
 										savingDone={savingDone}

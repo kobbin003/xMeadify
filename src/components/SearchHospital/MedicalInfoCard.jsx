@@ -15,10 +15,11 @@ const MedicalInfoCard = ({ medicalInfo }) => {
 	const myBookings = getMyBookings();
 
 	const appointmentFixed =
-		!isMybookingRoute && myBookings.length == 0
+		!isMybookingRoute || myBookings.length == 0
 			? false
 			: myBookings.find(
-					({ medical }) => medical["Provider ID"] == medicalInfo["Provider ID"]
+					({ medical }) =>
+						medical["Provider ID"] == medicalInfo?.["Provider ID"]
 			  );
 
 	return (
