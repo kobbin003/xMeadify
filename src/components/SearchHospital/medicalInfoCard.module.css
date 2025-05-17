@@ -1,9 +1,45 @@
+.medical-info-card {
+	background-color: white;
+	width: 60%;
+	padding: 2em;
+	border-radius: 15px;
+}
+.layout {
+	display: flex;
+	justify-content: space-between;
+	padding: 2em;
+}
+.hospital-desc {
+	display: flex;
+	gap: 1em;
+}
 .hospital-icon {
 }
 .hospital-detail {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	h3 {
+		color: var(--primary);
+	}
 }
 .booking {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	justify-content: flex-end;
+	align-items: center;
+}
+button {
+	cursor: pointer;
 }
 .rating {
+	background-color: green;
+	width: fit-content;
+	padding: 0.2em 0.4em;
+	border-radius: 5px;
+}
+
+.green-bg {
 	background-color: green;
 }

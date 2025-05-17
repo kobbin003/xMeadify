@@ -1,16 +1,17 @@
 import { useSearchContext } from "../../providers/SearchProvider";
 import MedicalInfoCard from "./MedicalInfoCard";
+import styles from "./medicalcenters.module.css";
 
 const MedicalCenters = () => {
 	const { city, medicalCenters, medicalCentersIsLoading } = useSearchContext();
 	console.log("medicalCenters: ", medicalCenters);
 	return (
-		<div>
+		<div className={styles["container"]}>
 			{medicalCentersIsLoading ? (
 				<p>Loading...</p>
 			) : medicalCenters.length > 0 ? (
 				<>
-					<div>
+					<div className={styles["availability-info"]}>
 						<h1>
 							{medicalCenters.length} medical centers available in{" "}
 							{city.toLowerCase()}
@@ -23,7 +24,7 @@ const MedicalCenters = () => {
 							</span>
 						</p>
 					</div>
-					<div>
+					<div className={styles["medical-centers"]}>
 						{medicalCenters.map((medicalInfo) => (
 							<MedicalInfoCard
 								key={medicalInfo?.["Provider ID"]}
@@ -33,7 +34,7 @@ const MedicalCenters = () => {
 					</div>
 				</>
 			) : (
-				<></>
+				<div></div>
 			)}
 		</div>
 	);

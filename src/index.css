@@ -11,10 +11,12 @@ a {
 :root {
 	--primary: #2aa8ff;
 	--primary-light: #2aa8ff45;
+	--secondary: #1b3c74;
 	--marine: #e7f0ff;
 	--white: #ffffff;
 	--nav-black: #102851;
 	--light-grey: #fafbfe;
+	--green: #02a401;
 	font-size: 16px;
 }
 

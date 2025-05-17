@@ -7,10 +7,12 @@ ul {
 	list-style: none;
 }
 .day-list {
+	padding-top: 0.2em;
 	& > li {
 		display: flex;
+		border-top: 1px solid rgba(128, 128, 128, 0.224);
+		padding-top: 1em;
 		& > p {
-			background-color: blanchedalmond;
 			width: fit-content;
 			min-width: 5em;
 		}
@@ -18,6 +20,7 @@ ul {
 }
 .time-list {
 	display: flex;
+	flex-direction: row;
 	gap: 1em;
 }
 .time-capsule {

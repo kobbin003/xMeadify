@@ -1,0 +1,9 @@
+.icon {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+}
+.icon-text {
+	font-weight: 600;
+	font-size: 24px;
+}

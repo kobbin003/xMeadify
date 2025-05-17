@@ -1,8 +1,10 @@
-form {
+.search-form {
 	position: relative;
 	display: flex;
 	width: 80%;
-	/* background-color: yellow; */
+	background-color: white;
+	padding: 1em;
+	border-radius: 15px;
 	margin: 0 auto;
 	justify-content: space-between;
 }

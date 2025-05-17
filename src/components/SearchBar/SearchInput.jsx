@@ -17,7 +17,7 @@ const SearchInput = ({ label, handleOnChange, value, data }) => {
 	}, [state]);
 
 	return (
-		<FormControl sx={{ width: "30%" }} id={label}>
+		<FormControl sx={{ width: "30%", border: "none" }} id={label}>
 			<LuSearch
 				style={{
 					position: "absolute",

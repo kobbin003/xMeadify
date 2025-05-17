@@ -1,0 +1,9 @@
+.container {
+	background-color: var(--marine);
+}
+.search-container {
+	background-color: var(--primary);
+	padding: 1em;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}

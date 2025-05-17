@@ -1,34 +1,62 @@
 .booking-modal {
 	position: absolute;
-	top: 80%;
+	top: 57%;
 	margin: 0 auto;
-	/* background-color: aqua; */
+	/* background-color: var(--white); */
 	width: 100%;
 }
 .center-booking-modal {
-	border: 1px solid green;
+	/* border: 1px solid green; */
+	border-radius: 15px;
 	position: relative;
 	width: 80%;
+	background-color: white;
 	/* background-color: brown; */
+	padding: 1em;
 	margin: 0 auto;
+	box-shadow: 0px 0px 1px 0px grey;
+
+	& > div:nth-child(2) {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding: 2em 0;
+	}
+	h3 {
+		font-size: 1.5rem;
+		padding: 0.5em 0;
+	}
 }
 .category-grid {
+	/* background-color: tomato; */
+	width: 90%;
 	display: flex;
+	justify-content: space-between;
 	gap: 1em;
+	padding-top: 1em;
 }
 .grid-item {
 	flex: 1;
 	height: fit-content;
-	border: 1px solid green;
+	/* border: 10px solid green; */
+	padding: 1em 0;
+	background-color: var(--light-grey);
+	/* background-color: palegreen; */
+	border-radius: 5px;
+	border: 1px solid var(--light-grey);
+	/* cursor: pointer; */
+	&:hover {
+		cursor: pointer;
+	}
 }
 .select-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	cursor: pointer;
-	background-color: var(--light-grey);
-	border: 1px solid var(--light-grey);
+	gap: 0.5em;
+	/* cursor: pointer; */
 }
 
 .selected {

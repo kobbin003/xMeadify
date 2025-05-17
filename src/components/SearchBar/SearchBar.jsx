@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import SearchInput from "./SearchInput";
 import { LuSearch } from "react-icons/lu";
-import "./searchbar.module.css";
+import styles from "./searchbar.module.css";
 import { useSearchContext } from "../../providers/SearchProvider";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -73,7 +73,7 @@ const SearchBar = () => {
 	}, [state]);
 
 	return (
-		<>
+		<div className={styles["search-form"]}>
 			<SearchInput
 				label="state"
 				handleOnChange={handleOnStateChange}
@@ -96,7 +96,7 @@ const SearchBar = () => {
 			>
 				Search
 			</Button>
-		</>
+		</div>
 	);
 };
 

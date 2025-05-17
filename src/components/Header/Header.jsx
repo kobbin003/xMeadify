@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import styles from "./header.module.css";
+import Icon from "../icon/Icon";
 const Header = () => {
 	return (
 		<header>
@@ -10,11 +11,8 @@ const Header = () => {
 			</div>
 			<nav className={styles["nav-bar"]}>
 				<div>
-					<Link to={"/"} className={styles["icon"]}>
-						<img src="./icon.svg" alt="icon" />
-						<span className={`primary-text ${styles["icon-text"]}`}>
-							Meadify
-						</span>
+					<Link to={"/"}>
+						<Icon />
 					</Link>
 				</div>
 

@@ -4,10 +4,11 @@ import Home from "./Home/Home";
 import Header from "./components/Header/Header";
 import MyBookings from "./MyBookings/MyBookings";
 import Doctors from "./Doctors/Doctors";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	return (
-		<>
+		<div className="root-div">
 			<Header />
 			<main>
 				<Routes>
@@ -16,7 +17,8 @@ function App() {
 					<Route path="/my-bookings" element={<MyBookings />} />
 				</Routes>
 			</main>
-		</>
+			<Footer />
+		</div>
 	);
 }
 

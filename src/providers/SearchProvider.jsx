@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const searchContext = createContext();
 
@@ -14,6 +14,11 @@ const SearchProvider = ({ children }) => {
 	//* do not need to implement the selectedCategory since we are hardcoding the value to be doctors.
 	// const [selectedCategory, setSelectedCategory] = useState("");
 
+	useEffect(() => {
+		if (!state || !city) {
+			setMedicalCenters([]);
+		}
+	}, [state]);
 	return (
 		<searchContext.Provider
 			value={{
