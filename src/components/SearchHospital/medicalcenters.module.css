@@ -1,6 +1,8 @@
 .container {
 	background-color: var(--marine);
 	padding: 2em;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
 .availability-info {
 	padding: 1em 0 2em;

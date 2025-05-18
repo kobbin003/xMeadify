@@ -3,6 +3,10 @@ import AdSection from "../components/Sections/home/AdSection";
 import FindBySpecialization from "../components/Sections/home/FindBySpecialization";
 import HeroSection from "../components/Sections/home/HeroSection";
 import { useSearchContext } from "../providers/SearchProvider";
+import MedicalSpecialist from "../components/Sections/home/MedicalSpecialist";
+import PatientCaring from "../components/Sections/home/PatientCaring";
+import OurFamilies from "../components/Sections/home/OurFamilies";
+import LatestNews from "../components/Sections/home/LatestNews";
 
 const Home = () => {
 	const { setState } = useSearchContext();
@@ -17,10 +21,10 @@ const Home = () => {
 			<HeroSection />
 			<AdSection />
 			<FindBySpecialization />
-			{/* <MedicalSpecialist /> */}
-			{/* <PatientCaring /> */}
-			{/* <LatestNews /> */}
-			{/* <OurFamilies /> */}
+			<MedicalSpecialist />
+			<PatientCaring />
+			<LatestNews />
+			<OurFamilies />
 			{/* <FAQ /> */}
 		</div>
 	);

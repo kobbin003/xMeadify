@@ -25,7 +25,7 @@ const MyBookings = () => {
 						/>
 					))
 				) : (
-					<p>No Bookings made</p>
+					<p style={{ color: "var(--primary)" }}>No Bookings made</p>
 				)}
 			</div>
 		</div>

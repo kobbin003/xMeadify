@@ -34,7 +34,9 @@ const MedicalCenters = () => {
 					</div>
 				</>
 			) : (
-				<div></div>
+				<div style={{ color: "var(--primary)" }}>
+					Please select your state and city to see available medical centers.
+				</div>
 			)}
 		</div>
 	);
